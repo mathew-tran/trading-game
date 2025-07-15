@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjlmutuo17bom"]
+
+[ext_resource type="Texture2D" uid="uid://cbhbc2b2gt8j1" path="res://Art/MarketSlot.png" id="1_uvisx"]
+
+[node name="MarketSlot" type="TextureRect"]
+texture = ExtResource("1_uvisx")
