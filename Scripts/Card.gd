@@ -12,8 +12,12 @@ enum VIS {
 	HIDDEN,
 	SHOWN,
 }
+enum CONTROL {
+	CAN_MOVE,
+	CANNOT_MOVE
+}
 
-enum CARD_TYPE {
+enum CARD_VALUE {
 	GOLD,
 	EMERALD,
 	RUBY
@@ -21,21 +25,24 @@ enum CARD_TYPE {
 
 var CardState : STATE
 var CardVis : VIS
-var CardType : CARD_TYPE
+var CardValue : CARD_VALUE
+var ControlType : CONTROL
 
 var DragOffset = Vector2.ZERO
+var LastPosition = Vector2.ZERO
 
 func Setup():
-	match CardType:
-		CARD_TYPE.GOLD:
+	print(CardValue)
+	match CardValue:
+		CARD_VALUE.GOLD:
 			$CardFront.texture = load("res://Art/Card-Gold.png")
-		CARD_TYPE.EMERALD:
+		CARD_VALUE.EMERALD:
 			$CardFront.texture = load("res://Art/Card-Emerald.png")
-		CARD_TYPE.RUBY:
+		CARD_VALUE.RUBY:
 			$CardFront.texture = load("res://Art/Card-Ruby.png")
-			
+	print("set")
 func _ready() -> void:
-	Setup()
+	ControlType = CONTROL.CANNOT_MOVE
 	SetNewState(CardState)
 	DragOffset = $CardBack.size / 2
 	
@@ -43,6 +50,8 @@ func Flip():
 	if CardVis == VIS.HIDDEN:
 		$AnimationPlayer.play("show")
 		CardVis = VIS.SHOWN
+		await $AnimationPlayer.animation_finished
+		ControlType = CONTROL.CAN_MOVE
 	
 func IsHovered():
 	return CardState == STATE.HOVERED
@@ -55,25 +64,37 @@ func IsUnHovered():
 	
 func SetNewState(state):
 	CardState = state
-	print(STATE.keys()[state])
+	if CardState == STATE.DRAGGED:
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+	else:
+		mouse_filter = Control.MOUSE_FILTER_STOP
+	print(name +  STATE.keys()[state])
 	
 func _process(delta: float) -> void:
 	if IsDragged():
 		if Input.is_action_just_released("left_click"):
 			SetNewState(STATE.HOVERED)	
+			Finder.GetPlayer().ReleaseCard()
 		else:
 			global_position = get_global_mouse_position() - DragOffset
 	elif IsHovered():
-		if Input.is_action_just_pressed("left_click"):
-			SetNewState(STATE.DRAGGED)			
+		if CanUse() and Finder.GetPlayer().IsHoldingCard() == false:
+			if Input.is_action_just_pressed("left_click"):
+				SetNewState(STATE.DRAGGED)	
+				Finder.GetPlayer().HoldCard(self)
+				LastPosition = global_position		
 		
-		
+func CanUse():
+	return ControlType == CONTROL.CAN_MOVE
+
+func RevertToLastPosition():
+	global_position = LastPosition
+			
 func _on_mouse_entered() -> void:
 	if IsUnHovered():
 		SetNewState(STATE.HOVERED)
-	print("entered")
+
 
 func _on_mouse_exited() -> void:
-	print("exited")
 	if IsHovered():
 		SetNewState(STATE.UNHOVERED)

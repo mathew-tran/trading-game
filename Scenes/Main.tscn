@@ -1,37 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqrflkogpni5j"]
+[gd_scene load_steps=5 format=3 uid="uid://bqrflkogpni5j"]
 
-[ext_resource type="PackedScene" uid="uid://bjlmutuo17bom" path="res://Prefab/MarketSlot.tscn" id="1_idj7w"]
+[ext_resource type="PackedScene" uid="uid://daxyu64wbluxe" path="res://Prefab/Market.tscn" id="1_idj7w"]
 [ext_resource type="Script" uid="uid://d315r0g1uudsy" path="res://Scripts/Deck.gd" id="2_kln2b"]
+[ext_resource type="PackedScene" uid="uid://dy2p7htxwhure" path="res://Prefab/PlayArea.tscn" id="3_kln2b"]
+[ext_resource type="PackedScene" uid="uid://debwgkx2iihoy" path="res://Prefab/Player.tscn" id="4_rgh2o"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(165, 149)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 15.0
-offset_top = -104.0
-offset_right = 767.0
-offset_bottom = 125.0
+[node name="PlayArea" parent="." instance=ExtResource("3_kln2b")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = 671.0
+offset_right = 1765.0
+offset_bottom = 915.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="MarketSlot" parent="HBoxContainer" instance=ExtResource("1_idj7w")]
-layout_mode = 2
-
-[node name="MarketSlot2" parent="HBoxContainer" instance=ExtResource("1_idj7w")]
-layout_mode = 2
-
-[node name="MarketSlot3" parent="HBoxContainer" instance=ExtResource("1_idj7w")]
-layout_mode = 2
-
-[node name="MarketSlot4" parent="HBoxContainer" instance=ExtResource("1_idj7w")]
-layout_mode = 2
-
-[node name="MarketSlot5" parent="HBoxContainer" instance=ExtResource("1_idj7w")]
-layout_mode = 2
+[node name="HBoxContainer" parent="." instance=ExtResource("1_idj7w")]
+offset_left = 53.0
+offset_top = 183.0
+offset_right = 1708.0
+offset_bottom = 412.0
+theme_override_constants/separation = 40
+alignment = 1
 
 [node name="Deck" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -183.0
-offset_top = -120.0
-offset_right = 12.0
-offset_bottom = 129.0
+offset_left = -145.0
+offset_top = 167.0
+offset_right = 50.0
+offset_bottom = 416.0
 script = ExtResource("2_kln2b")
+
+[node name="Player" parent="." instance=ExtResource("4_rgh2o")]
