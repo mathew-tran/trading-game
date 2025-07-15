@@ -66,6 +66,8 @@ _data = {
 }
 
 [node name="Card" type="Control"]
+z_index = 10
+z_as_relative = false
 custom_minimum_size = Vector2(160, 200)
 layout_mode = 3
 anchors_preset = 0

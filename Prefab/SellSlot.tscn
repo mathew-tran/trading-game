@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4kwtsaa1jivx"]
+
+[ext_resource type="Script" uid="uid://beswgh0tr5ovh" path="res://Scripts/CardSlot.gd" id="1_foipe"]
+[ext_resource type="PackedScene" uid="uid://bjlmutuo17bom" path="res://Prefab/CardSlot.tscn" id="2_foipe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foipe"]
+
+[node name="MarketSlot" type="Panel"]
+custom_minimum_size = Vector2(552, 444)
+offset_right = 168.0
+offset_bottom = 208.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_foipe")
+script = ExtResource("1_foipe")
+MaxCardsToHold = 5
+
+[node name="CardHolder" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 403.0
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="MarketSlot" parent="CardHolder" instance=ExtResource("2_foipe")]
+layout_mode = 2
+
+[node name="MarketSlot2" parent="CardHolder" instance=ExtResource("2_foipe")]
+layout_mode = 2
+
+[node name="MarketSlot3" parent="CardHolder" instance=ExtResource("2_foipe")]
+layout_mode = 2
+
+[node name="MarketSlot4" parent="CardHolder" instance=ExtResource("2_foipe")]
+layout_mode = 2
+
+[node name="MarketSlot5" parent="CardHolder" instance=ExtResource("2_foipe")]
+layout_mode = 2
+
+[node name="MarketSlot6" parent="CardHolder" instance=ExtResource("2_foipe")]
+layout_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

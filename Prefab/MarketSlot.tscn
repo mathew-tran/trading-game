@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjlmutuo17bom"]
-
-[ext_resource type="Texture2D" uid="uid://cbhbc2b2gt8j1" path="res://Art/MarketSlot.png" id="1_uvisx"]
-[ext_resource type="Script" uid="uid://beswgh0tr5ovh" path="res://Scripts/MarketSlot.gd" id="2_rkd0j"]
-
-[node name="MarketSlot" type="TextureRect"]
-texture = ExtResource("1_uvisx")
-script = ExtResource("2_rkd0j")

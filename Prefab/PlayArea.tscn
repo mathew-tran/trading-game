@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy2p7htxwhure"]
+[gd_scene load_steps=3 format=3 uid="uid://dy2p7htxwhure"]
 
 [ext_resource type="Script" uid="uid://c04mcisfcsqcm" path="res://Scripts/PlayArea.gd" id="1_dwtvx"]
+[ext_resource type="PackedScene" uid="uid://bjlmutuo17bom" path="res://Prefab/CardSlot.tscn" id="2_txfny"]
 
 [node name="PlayArea" type="Panel"]
 offset_left = -164.0
@@ -9,7 +10,7 @@ offset_right = 988.0
 offset_bottom = 566.0
 script = ExtResource("1_dwtvx")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="CardHolder" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,5 +18,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarketSlot" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2
+
+[node name="MarketSlot2" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2
+
+[node name="MarketSlot3" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2
+
+[node name="MarketSlot4" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2
+
+[node name="MarketSlot5" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2
+
+[node name="MarketSlot6" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2
+
+[node name="MarketSlot7" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2
+
+[node name="MarketSlot8" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2
+
+[node name="MarketSlot9" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2
+
+[node name="MarketSlot10" parent="HBoxContainer2" instance=ExtResource("2_txfny")]
+layout_mode = 2

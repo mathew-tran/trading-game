@@ -33,5 +33,5 @@ func PopulateMarket():
 	for slot in market.GetSlots():
 		if slot.IsOccupied() == false:
 			var card = Cards.pop_back() as Card
-			await slot.OccupyCard(card)
+			await slot.AddCard(card)
 			await card.Flip()

@@ -66,8 +66,10 @@ func SetNewState(state):
 	CardState = state
 	if CardState == STATE.DRAGGED:
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		z_index = 11
 	else:
 		mouse_filter = Control.MOUSE_FILTER_STOP
+		z_index = 10
 	print(name +  STATE.keys()[state])
 	
 func _process(delta: float) -> void:

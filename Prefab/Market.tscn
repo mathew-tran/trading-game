@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://daxyu64wbluxe"]
 
 [ext_resource type="Script" uid="uid://d08lx5x53tswb" path="res://Scripts/Market.gd" id="1_o5agl"]
-[ext_resource type="PackedScene" uid="uid://bjlmutuo17bom" path="res://Prefab/MarketSlot.tscn" id="1_qp6gj"]
+[ext_resource type="PackedScene" uid="uid://bjlmutuo17bom" path="res://Prefab/CardSlot.tscn" id="1_qp6gj"]
 
 [node name="HBoxContainer" type="HBoxContainer" groups=["Market"]]
 offset_left = 15.0
 offset_top = -104.0
 offset_right = 767.0
 offset_bottom = 125.0
+theme_override_constants/separation = 0
 script = ExtResource("1_o5agl")
 
 [node name="MarketSlot" parent="." instance=ExtResource("1_qp6gj")]

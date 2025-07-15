@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqrflkogpni5j"]
+[gd_scene load_steps=6 format=3 uid="uid://bqrflkogpni5j"]
 
 [ext_resource type="PackedScene" uid="uid://daxyu64wbluxe" path="res://Prefab/Market.tscn" id="1_idj7w"]
 [ext_resource type="Script" uid="uid://d315r0g1uudsy" path="res://Scripts/Deck.gd" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://dy2p7htxwhure" path="res://Prefab/PlayArea.tscn" id="3_kln2b"]
 [ext_resource type="PackedScene" uid="uid://debwgkx2iihoy" path="res://Prefab/Player.tscn" id="4_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://d4kwtsaa1jivx" path="res://Prefab/SellSlot.tscn" id="5_pbw6q"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(165, 149)
@@ -24,9 +25,8 @@ grow_vertical = 0
 [node name="HBoxContainer" parent="." instance=ExtResource("1_idj7w")]
 offset_left = 53.0
 offset_top = 183.0
-offset_right = 1708.0
+offset_right = 1099.0
 offset_bottom = 412.0
-theme_override_constants/separation = 40
 alignment = 1
 
 [node name="Deck" type="Control" parent="."]
@@ -39,3 +39,9 @@ offset_bottom = 416.0
 script = ExtResource("2_kln2b")
 
 [node name="Player" parent="." instance=ExtResource("4_rgh2o")]
+
+[node name="MarketSlot" parent="." instance=ExtResource("5_pbw6q")]
+offset_left = 1179.0
+offset_top = 28.0
+offset_right = 1731.0
+offset_bottom = 472.0

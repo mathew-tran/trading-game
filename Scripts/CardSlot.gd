@@ -1,0 +1,44 @@
+extends Panel
+
+class_name CardSlot 
+
+@export var MaxCardsToHold = 3
+
+@onready var CardContainer = $CardHolder
+
+func IsOccupied():
+	return CardContainer.get_child_count() >= MaxCardsToHold
+	
+func _on_mouse_entered() -> void:
+	OnMouseEntered()
+	
+func OnMouseEntered():
+	if Finder.GetPlayer().IsHoldingCard():
+		if IsOccupied():
+			return
+		Finder.GetPlayer().SetArea(self)
+		print("Hold Over Valid Area" + name)
+
+func OnMouseExited():
+	Finder.GetPlayer().ClearArea()
+	print("Move from area" + name)
+	
+func AddCard(card : Card):
+	card.SetNewState(Card.STATE.UNHOVERED)
+	card.reparent(CardContainer)
+	await get_tree().process_frame
+	var tween = get_tree().create_tween()
+	tween.tween_property(card, "global_position", CardContainer.global_position, .1)
+	await tween.finished
+	
+	await get_tree().create_timer(.1).timeout
+
+func SetActivated(bActivated):
+	if bActivated:
+		$TextureRect.self_modulate = Color.DARK_GRAY
+	else:
+		$TextureRect.self_modulate = Color.WHITE
+		
+func _on_mouse_exited() -> void:
+	OnMouseExited()
+ 

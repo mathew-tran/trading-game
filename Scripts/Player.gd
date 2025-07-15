@@ -3,7 +3,7 @@ extends Node2D
 class_name Player
 
 var HeldCard : Card
-var CardAreaToDrop : CardDroppableArea
+var CardAreaToDrop : CardSlot
 
 func IsHoldingCard():
 	return HeldCard != null
@@ -11,9 +11,24 @@ func IsHoldingCard():
 func HoldCard(card):
 	HeldCard = card
 	
-func ReleaseCard():
+func SetArea(area : CardSlot):
+	CardAreaToDrop = area
+	CardAreaToDrop.SetActivated(true)
+	CardAreaToDrop.self_modulate = Color.DARK_GRAY
+	
+
+func ClearArea():
 	if CardAreaToDrop:
-		pass
+		CardAreaToDrop.SetActivated(false)
+		CardAreaToDrop.self_modulate = Color.WHITE
+		CardAreaToDrop = null
+	
+func ReleaseCard():
+	if HeldCard == null:
+		return
+	if CardAreaToDrop:
+		CardAreaToDrop.AddCard(HeldCard)
 	else:
 		HeldCard.RevertToLastPosition()
+		HeldCard.SetNewState(Card.STATE.UNHOVERED)
 	HeldCard = null
