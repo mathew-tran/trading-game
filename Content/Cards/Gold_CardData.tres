@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://ch5dqvawljobi"]
+
+[ext_resource type="Script" uid="uid://toqiwsj7qij2" path="res://Content/CardData.gd" id="1_kgs5a"]
+[ext_resource type="Texture2D" uid="uid://cjnpejlpnl0j" path="res://Art/Card-Gold.png" id="1_lucsp"]
+
+[resource]
+script = ExtResource("1_kgs5a")
+CardName = "Gold"
+CardValue = 10
+CardArt = ExtResource("1_lucsp")
+metadata/_custom_type_script = "uid://toqiwsj7qij2"

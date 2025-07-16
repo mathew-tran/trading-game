@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp152bf02goyn"]
+
+[ext_resource type="Script" uid="uid://b3gwypw3sbcan" path="res://Scripts/InfoPanel.gd" id="1_srmvp"]
+
+[node name="InfoPanel" type="Panel" groups=["InfoPanel"]]
+offset_right = 241.0
+offset_bottom = 220.0
+mouse_filter = 2
+script = ExtResource("1_srmvp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "GOLD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Worth" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "10g"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExtraEffects" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Doubles the price of other gold in hand when sold"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters_behavior = 1

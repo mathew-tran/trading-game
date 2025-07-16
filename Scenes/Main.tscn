@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqrflkogpni5j"]
+[gd_scene load_steps=12 format=3 uid="uid://bqrflkogpni5j"]
 
 [ext_resource type="PackedScene" uid="uid://daxyu64wbluxe" path="res://Prefab/Market.tscn" id="1_idj7w"]
 [ext_resource type="Script" uid="uid://hlhbpv1joijt" path="res://Scripts/Game.gd" id="1_v1gob"]
@@ -6,26 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://dy2p7htxwhure" path="res://Prefab/PlayArea.tscn" id="3_kln2b"]
 [ext_resource type="PackedScene" uid="uid://debwgkx2iihoy" path="res://Prefab/Player.tscn" id="4_rgh2o"]
 [ext_resource type="Texture2D" uid="uid://btpece6xiwpra" path="res://Art/CardBack.png" id="5_50glp"]
+[ext_resource type="Resource" uid="uid://cio8bm6p55ekx" path="res://Content/Decks/StartingDeckData.tres" id="5_bmxlf"]
 [ext_resource type="PackedScene" uid="uid://d4kwtsaa1jivx" path="res://Prefab/SellArea.tscn" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://cd4s5a5vu2f4b" path="res://Prefab/FinishTurnButton.tscn" id="7_jw32o"]
 [ext_resource type="PackedScene" uid="uid://cnb6u44pu8f1u" path="res://Prefab/GoalUI.tscn" id="8_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://dp152bf02goyn" path="res://Prefab/InfoPanel.tscn" id="11_4kpch"]
 
 [node name="Game" type="Node2D" groups=["Game"]]
 position = Vector2(165, 149)
 script = ExtResource("1_v1gob")
 
 [node name="PlayArea" parent="." instance=ExtResource("3_kln2b")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -150.0
 offset_top = 671.0
 offset_right = 1765.0
 offset_bottom = 915.0
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="MarketText" type="Label" parent="."]
 offset_left = 56.0
@@ -52,6 +47,7 @@ offset_top = 317.0
 offset_right = 70.0
 offset_bottom = 566.0
 script = ExtResource("2_kln2b")
+DeckDataRef = ExtResource("5_bmxlf")
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Deck"]
@@ -65,15 +61,15 @@ position = Vector2(0, 352)
 
 [node name="SellArea" parent="." instance=ExtResource("5_pbw6q")]
 offset_left = 1166.0
-offset_top = 105.0
+offset_top = 18.0
 offset_right = 1718.0
-offset_bottom = 549.0
+offset_bottom = 462.0
 
 [node name="SellText" type="Label" parent="."]
 offset_left = 1177.0
-offset_top = -4.0
+offset_top = -91.0
 offset_right = 1721.0
-offset_bottom = 96.0
+offset_bottom = 9.0
 theme_override_font_sizes/font_size = 50
 text = "SELL"
 horizontal_alignment = 1
@@ -93,6 +89,13 @@ vertical_alignment = 1
 
 [node name="FinishTurnButton" parent="." instance=ExtResource("7_jw32o")]
 offset_left = 1192.0
-offset_top = 571.0
+offset_top = 484.0
 offset_right = 1692.0
-offset_bottom = 621.0
+offset_bottom = 534.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" parent="CanvasLayer" instance=ExtResource("11_4kpch")]
+visible = false
+
+[node name="Effects" type="Node2D" parent="." groups=["Effects"]]

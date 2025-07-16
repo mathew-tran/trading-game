@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dya7amq2n5vpp"]
+
+[ext_resource type="Texture2D" uid="uid://ck4i4qtttnf85" path="res://Art/Card-Emerald.png" id="1_n3qvl"]
+[ext_resource type="Script" uid="uid://toqiwsj7qij2" path="res://Content/CardData.gd" id="2_sy0wu"]
+
+[resource]
+script = ExtResource("2_sy0wu")
+CardName = "Emerald"
+CardValue = 5
+CardArt = ExtResource("1_n3qvl")
+metadata/_custom_type_script = "uid://toqiwsj7qij2"

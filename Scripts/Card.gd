@@ -17,29 +17,16 @@ enum CONTROL {
 	CANNOT_MOVE
 }
 
-enum CARD_VALUE {
-	GOLD,
-	EMERALD,
-	RUBY
-}
-
 var CardState : STATE
 var CardVis : VIS
-var CardValue : CARD_VALUE
+var CardDataRef : CardData
 var ControlType : CONTROL
 
 var DragOffset = Vector2.ZERO
 var LastPosition = Vector2.ZERO
 
 func Setup():
-	print(CardValue)
-	match CardValue:
-		CARD_VALUE.GOLD:
-			$CardFront.texture = load("res://Art/Card-Gold.png")
-		CARD_VALUE.EMERALD:
-			$CardFront.texture = load("res://Art/Card-Emerald.png")
-		CARD_VALUE.RUBY:
-			$CardFront.texture = load("res://Art/Card-Ruby.png")
+	$CardFront.texture = CardDataRef.CardArt
 	print("set")
 func _ready() -> void:
 	ControlType = CONTROL.CANNOT_MOVE
@@ -52,6 +39,12 @@ func Flip():
 		CardVis = VIS.SHOWN
 		await $AnimationPlayer.animation_finished
 		ControlType = CONTROL.CAN_MOVE
+	
+func FlipBack():
+	if CardVis == VIS.SHOWN:
+		$AnimationPlayer.play_backwards("show")
+		CardVis = VIS.SHOWN
+		await $AnimationPlayer.animation_finished
 	
 func IsHovered():
 	return CardState == STATE.HOVERED
@@ -87,6 +80,7 @@ func _process(delta: float) -> void:
 		if CanUse() and Finder.GetPlayer().IsHoldingCard() == false and Finder.GetGame().IsPlayerTurn():
 			if Input.is_action_just_pressed("left_click"):
 				SetNewState(STATE.DRAGGED)	
+				HideCardInfo()
 				Finder.GetPlayer().HoldCard(self)
 				LastPosition = global_position		
 		
@@ -99,10 +93,21 @@ func RevertToLastPosition():
 func _on_mouse_entered() -> void:
 	if IsUnHovered():
 		SetNewState(STATE.HOVERED)
+		ShowCardInfo()
+
+func ShowCardInfo():
+	var data = {}
+	data["value"] = CardDataRef.GetValue()
+	data["title"] = CardDataRef.CardName
+	Finder.GetInfoPanel().ShowInfo(data)
+	
+func HideCardInfo():
+	Finder.GetInfoPanel().Hide()
 
 func GetValue():
-	return CardValue * 10
+	return CardDataRef.GetValue()
 	
 func _on_mouse_exited() -> void:
 	if IsHovered():
 		SetNewState(STATE.UNHOVERED)
+		HideCardInfo()

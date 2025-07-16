@@ -2,6 +2,7 @@ extends Control
 
 class_name Deck
 
+@export var DeckDataRef : DeckData
 var Cards = []
 
 func _ready() -> void:
@@ -14,15 +15,15 @@ func Setup():
 	var startingOffset = Vector2.ZERO
 	var cardClass = load("res://Prefab/Card.tscn")
 	var cardAmount = 0
-	for copyAmount in range(0, 5):
-		for cardType in Card.CARD_VALUE.values():
-			cardsToSpawn.append(cardType)
 	
+	for pairing in DeckDataRef.CardPairings:
+		for amount in range(0, pairing.Amount):
+			cardsToSpawn.append(pairing.CardDataRef)
 	cardsToSpawn.shuffle()
 	await get_tree().process_frame
 	for card in cardsToSpawn:
 		var instance = cardClass.instantiate() as Card
-		instance.CardValue = card
+		instance.CardDataRef = card
 		print(card)
 		instance.global_position = startingOffset + offsetAmount * cardAmount
 		print(instance.global_position)

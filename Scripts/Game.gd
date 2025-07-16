@@ -25,7 +25,11 @@ func FinishTurn():
 	SetState(GAME_STATE.SETTING_UP)
 	var usedSlot = $SellArea.GetNextUsedSlot()
 	while usedSlot != null:
-		AddPoints(usedSlot.GetCard().GetValue())
+		await usedSlot.GetCard().FlipBack()
+		var value = usedSlot.GetCard().GetValue()
+		Helper.AddTextPopup(str(value), .8, usedSlot.GetPointSpawnPosition())
+		AddPoints(value)
+		
 		usedSlot.GetCard().queue_free()
 		await get_tree().process_frame
 		usedSlot = $SellArea.GetNextUsedSlot()

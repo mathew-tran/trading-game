@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dcw2bancfy2ag"]
+
+[ext_resource type="Texture2D" uid="uid://ypuyocdio6g" path="res://Art/Card-Ruby.png" id="1_ipafm"]
+[ext_resource type="Script" uid="uid://toqiwsj7qij2" path="res://Content/CardData.gd" id="2_kow3c"]
+
+[resource]
+script = ExtResource("2_kow3c")
+CardName = "Ruby"
+CardValue = 8
+CardArt = ExtResource("1_ipafm")
+metadata/_custom_type_script = "uid://toqiwsj7qij2"

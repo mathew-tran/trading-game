@@ -7,6 +7,9 @@ class_name CardSlot
 func IsOccupied():
 	return CardContainer.get_child_count() > 0
 	
+func GetPointSpawnPosition():
+	return $PointSpawnPosition.global_position
+	
 func GetCard() -> Card:
 	return CardContainer.get_child(0)
 	
