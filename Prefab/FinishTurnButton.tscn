@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd4s5a5vu2f4b"]
+
+[ext_resource type="Script" uid="uid://causo3jc1wr0x" path="res://Scripts/FinishTurnButton.gd" id="1_fhce6"]
+
+[node name="FinishTurnButton" type="Button"]
+custom_minimum_size = Vector2(500, 50)
+offset_left = 1205.0
+offset_top = 494.0
+offset_right = 1705.0
+offset_bottom = 544.0
+text = "FINISH TURN"
+script = ExtResource("1_fhce6")
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

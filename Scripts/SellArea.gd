@@ -1,3 +1,3 @@
 extends CardHoldArea
 
-class_name PlayArea
+class_name SellArea

@@ -1,0 +1,49 @@
+extends Node2D
+
+class_name Game
+
+var StartingHandAmount = 5
+
+enum GAME_STATE {
+	SETTING_UP,
+	PLAY
+}
+
+var CurrentState : GAME_STATE
+
+var GoalAmount = 10000
+var CurrentAmount = 0
+
+signal OnStateUpdate(state)
+signal OnGoalUpdated
+
+func AddPoints(amount):
+	CurrentAmount += amount
+	OnGoalUpdated.emit()
+	
+func FinishTurn():
+	SetState(GAME_STATE.SETTING_UP)
+	var usedSlot = $SellArea.GetNextUsedSlot()
+	while usedSlot != null:
+		AddPoints(usedSlot.GetCard().GetValue())
+		usedSlot.GetCard().queue_free()
+		await get_tree().process_frame
+		usedSlot = $SellArea.GetNextUsedSlot()
+		
+	await $Deck.PopulateMarket()
+	SetState(GAME_STATE.PLAY)
+func SetState(state):
+	CurrentState = state
+	OnStateUpdate.emit(CurrentState)
+	
+func IsPlayerTurn():
+	return CurrentState == GAME_STATE.PLAY
+	
+func _ready() -> void:
+	OnGoalUpdated.emit()
+	SetState(GAME_STATE.SETTING_UP)
+	await $Deck.Setup()
+	await $Deck.PopulateMarket()
+	for x in range(0, StartingHandAmount):
+		await $Deck.AddCardToPlayerHand()
+	SetState(GAME_STATE.PLAY)

@@ -27,7 +27,7 @@ func ReleaseCard():
 	if HeldCard == null:
 		return
 	if CardAreaToDrop:
-		CardAreaToDrop.AddCard(HeldCard)
+		CardAreaToDrop.AddCard(HeldCard, .05)
 	else:
 		HeldCard.RevertToLastPosition()
 		HeldCard.SetNewState(Card.STATE.UNHOVERED)

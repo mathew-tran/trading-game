@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnb6u44pu8f1u"]
+
+[ext_resource type="Script" uid="uid://r5pubgodo0ru" path="res://Scripts/GoalUI.gd" id="1_egxww"]
+
+[node name="Goal" type="GridContainer"]
+offset_left = -49.0
+offset_top = -47.0
+offset_right = 339.0
+offset_bottom = 95.0
+columns = 2
+script = ExtResource("1_egxww")
+
+[node name="GoalText" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "GOAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoalValue" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10,000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentText" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "CURRENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentValue" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

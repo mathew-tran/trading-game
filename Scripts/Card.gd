@@ -64,6 +64,10 @@ func IsUnHovered():
 	
 func SetNewState(state):
 	CardState = state
+	if CardState == STATE.HOVERED or CardState == STATE.DRAGGED:
+		$CardFront.rotation_degrees = 5
+	else:
+		$CardFront.rotation_degrees = 0
 	if CardState == STATE.DRAGGED:
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 		z_index = 11
@@ -80,7 +84,7 @@ func _process(delta: float) -> void:
 		else:
 			global_position = get_global_mouse_position() - DragOffset
 	elif IsHovered():
-		if CanUse() and Finder.GetPlayer().IsHoldingCard() == false:
+		if CanUse() and Finder.GetPlayer().IsHoldingCard() == false and Finder.GetGame().IsPlayerTurn():
 			if Input.is_action_just_pressed("left_click"):
 				SetNewState(STATE.DRAGGED)	
 				Finder.GetPlayer().HoldCard(self)
@@ -96,7 +100,9 @@ func _on_mouse_entered() -> void:
 	if IsUnHovered():
 		SetNewState(STATE.HOVERED)
 
-
+func GetValue():
+	return CardValue * 10
+	
 func _on_mouse_exited() -> void:
 	if IsHovered():
 		SetNewState(STATE.UNHOVERED)

@@ -104,6 +104,7 @@ stretch_mode = 5
 libraries = {
 &"": SubResource("AnimationLibrary_8bs63")
 }
+speed_scale = 3.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

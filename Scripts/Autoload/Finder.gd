@@ -1,5 +1,11 @@
 extends Node
 
+func GetGame() -> Game:
+	var result = get_tree().get_nodes_in_group("Game")
+	if result:
+		return result[0]
+	return null
+	
 func GetMarket() -> Market:
 	var result = get_tree().get_nodes_in_group("Market")
 	if result:
@@ -12,3 +18,8 @@ func GetPlayer() -> Player:
 		return result[0]
 	return null
 	
+func GetPlayArea() -> PlayArea:
+	var result = get_tree().get_nodes_in_group("PlayArea")
+	if result:
+		return result[0]
+	return null

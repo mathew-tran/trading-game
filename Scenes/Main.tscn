@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqrflkogpni5j"]
+[gd_scene load_steps=10 format=3 uid="uid://bqrflkogpni5j"]
 
 [ext_resource type="PackedScene" uid="uid://daxyu64wbluxe" path="res://Prefab/Market.tscn" id="1_idj7w"]
+[ext_resource type="Script" uid="uid://hlhbpv1joijt" path="res://Scripts/Game.gd" id="1_v1gob"]
 [ext_resource type="Script" uid="uid://d315r0g1uudsy" path="res://Scripts/Deck.gd" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://dy2p7htxwhure" path="res://Prefab/PlayArea.tscn" id="3_kln2b"]
 [ext_resource type="PackedScene" uid="uid://debwgkx2iihoy" path="res://Prefab/Player.tscn" id="4_rgh2o"]
-[ext_resource type="PackedScene" uid="uid://d4kwtsaa1jivx" path="res://Prefab/SellSlot.tscn" id="5_pbw6q"]
+[ext_resource type="Texture2D" uid="uid://btpece6xiwpra" path="res://Art/CardBack.png" id="5_50glp"]
+[ext_resource type="PackedScene" uid="uid://d4kwtsaa1jivx" path="res://Prefab/SellArea.tscn" id="5_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://cd4s5a5vu2f4b" path="res://Prefab/FinishTurnButton.tscn" id="7_jw32o"]
+[ext_resource type="PackedScene" uid="uid://cnb6u44pu8f1u" path="res://Prefab/GoalUI.tscn" id="8_vy5pj"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D" groups=["Game"]]
 position = Vector2(165, 149)
+script = ExtResource("1_v1gob")
 
 [node name="PlayArea" parent="." instance=ExtResource("3_kln2b")]
 anchors_preset = 7
@@ -22,26 +27,72 @@ offset_bottom = 915.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="MarketText" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 215.0
+offset_right = 930.0
+offset_bottom = 315.0
+theme_override_font_sizes/font_size = 50
+text = "MARKET"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HBoxContainer" parent="." instance=ExtResource("1_idj7w")]
-offset_left = 53.0
-offset_top = 183.0
-offset_right = 1099.0
-offset_bottom = 412.0
+offset_left = -22.0
+offset_top = 323.0
+offset_right = 1024.0
+offset_bottom = 552.0
 alignment = 1
 
 [node name="Deck" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -145.0
-offset_top = 167.0
-offset_right = 50.0
-offset_bottom = 416.0
+offset_left = -125.0
+offset_top = 317.0
+offset_right = 70.0
+offset_bottom = 566.0
 script = ExtResource("2_kln2b")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Deck"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_50glp")
 
 [node name="Player" parent="." instance=ExtResource("4_rgh2o")]
+position = Vector2(0, 352)
 
-[node name="MarketSlot" parent="." instance=ExtResource("5_pbw6q")]
-offset_left = 1179.0
-offset_top = 28.0
-offset_right = 1731.0
-offset_bottom = 472.0
+[node name="SellArea" parent="." instance=ExtResource("5_pbw6q")]
+offset_left = 1166.0
+offset_top = 105.0
+offset_right = 1718.0
+offset_bottom = 549.0
+
+[node name="SellText" type="Label" parent="."]
+offset_left = 1177.0
+offset_top = -4.0
+offset_right = 1721.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 50
+text = "SELL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Goal" parent="." instance=ExtResource("8_vy5pj")]
+
+[node name="InventoryText" type="Label" parent="."]
+offset_left = -149.0
+offset_top = 565.0
+offset_right = 202.0
+offset_bottom = 665.0
+theme_override_font_sizes/font_size = 50
+text = "INVENTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinishTurnButton" parent="." instance=ExtResource("7_jw32o")]
+offset_left = 1192.0
+offset_top = 571.0
+offset_right = 1692.0
+offset_bottom = 621.0

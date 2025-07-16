@@ -2,12 +2,13 @@ extends Panel
 
 class_name CardSlot 
 
-@export var MaxCardsToHold = 3
-
 @onready var CardContainer = $CardHolder
 
 func IsOccupied():
-	return CardContainer.get_child_count() >= MaxCardsToHold
+	return CardContainer.get_child_count() > 0
+	
+func GetCard() -> Card:
+	return CardContainer.get_child(0)
 	
 func _on_mouse_entered() -> void:
 	OnMouseEntered()
@@ -23,13 +24,15 @@ func OnMouseExited():
 	Finder.GetPlayer().ClearArea()
 	print("Move from area" + name)
 	
-func AddCard(card : Card):
+func AddCard(card : Card, speed = .1):
 	card.SetNewState(Card.STATE.UNHOVERED)
-	card.reparent(CardContainer)
+	var oldPosition = card.global_position
+	
 	await get_tree().process_frame
 	var tween = get_tree().create_tween()
 	tween.tween_property(card, "global_position", CardContainer.global_position, .1)
 	await tween.finished
+	card.reparent(CardContainer, true)
 	
 	await get_tree().create_timer(.1).timeout
 

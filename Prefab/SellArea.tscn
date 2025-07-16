@@ -1,17 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4kwtsaa1jivx"]
 
-[ext_resource type="Script" uid="uid://beswgh0tr5ovh" path="res://Scripts/CardSlot.gd" id="1_foipe"]
+[ext_resource type="Script" uid="uid://deu1hg01mcqfk" path="res://Scripts/SellArea.gd" id="1_0kqm6"]
 [ext_resource type="PackedScene" uid="uid://bjlmutuo17bom" path="res://Prefab/CardSlot.tscn" id="2_foipe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foipe"]
 
-[node name="MarketSlot" type="Panel"]
+[node name="SellSlot" type="Panel"]
 custom_minimum_size = Vector2(552, 444)
 offset_right = 168.0
 offset_bottom = 208.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_foipe")
-script = ExtResource("1_foipe")
-MaxCardsToHold = 5
+script = ExtResource("1_0kqm6")
 
 [node name="CardHolder" type="GridContainer" parent="."]
 layout_mode = 1
