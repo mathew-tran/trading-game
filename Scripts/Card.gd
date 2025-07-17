@@ -119,6 +119,7 @@ func ShowCardInfo():
 	data["value"] = GetValue()
 	data["title"] = CardDataRef.CardName
 	data["tags"] = CardDataRef.GetTagsString()
+	data["extra-effects"] = CardDataRef.GetDescription()
 	Finder.GetInfoPanel().ShowInfo(data)
 	
 func HideCardInfo():

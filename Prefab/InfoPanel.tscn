@@ -6,7 +6,7 @@
 bg_color = Color(0, 0, 0, 1)
 
 [node name="InfoPanel" type="Panel" groups=["InfoPanel"]]
-offset_right = 241.0
+offset_right = 382.0
 offset_bottom = 220.0
 mouse_filter = 2
 script = ExtResource("1_srmvp")
@@ -43,7 +43,7 @@ visible_characters_behavior = 1
 [node name="Tags" type="Label" parent="."]
 layout_mode = 2
 offset_top = -49.0
-offset_right = 241.0
+offset_right = 381.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_srmvp")
 text = "[GEM][TOOL][VEGETABLE][BLAH]"
 horizontal_alignment = 1

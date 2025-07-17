@@ -16,7 +16,11 @@ enum EFFECT_PROC_TIME {
 @export var CardArt : Texture2D
 
 @export var Effects : Array[CardEffectData]
+@export_multiline var Description  = ""
 
+func GetDescription():
+	return Description
+	
 func GetEffectsOfType(effectType : EFFECT_PROC_TIME):
 	var effects = []
 	for effect in Effects:

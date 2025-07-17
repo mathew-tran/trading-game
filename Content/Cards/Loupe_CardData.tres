@@ -10,6 +10,7 @@ script = ExtResource("3_y6gmt")
 AmountToIncrease = 2
 TagToApply = 0
 ProcEffectPhase = 0
+EffectTarget = 0
 metadata/_custom_type_script = "uid://cnvie8awbtl7k"
 
 [resource]
@@ -19,4 +20,5 @@ CardName = "Loupe"
 CardValue = 8
 CardArt = ExtResource("1_3ow74")
 Effects = Array[ExtResource("2_y6gmt")]([SubResource("Resource_pfdon")])
+Description = "When sold, other sold gem items will be worth 2 more gold."
 metadata/_custom_type_script = "uid://toqiwsj7qij2"

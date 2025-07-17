@@ -9,12 +9,10 @@ enum EFFECT_TARGET {
 @export var ProcEffectPhase : CardData.EFFECT_PROC_TIME
 @export var EffectTarget : EFFECT_TARGET
 
-func GetEffectDescription():
-	pass
-	
 func DoEffect(card : Card):
 	pass
 
+	
 func GetTargets():
 	var targets = []
 	if EffectTarget == EFFECT_TARGET.SELL:
