@@ -25,9 +25,25 @@ var ControlType : CONTROL
 var DragOffset = Vector2.ZERO
 var LastPosition = Vector2.ZERO
 
+var CurrentValue = 0
+
 func Setup():
 	$CardFront.texture = CardDataRef.CardArt
+	CurrentValue = CardDataRef.GetValue()
 	print("set")
+	
+func ApplyEffects(effectType : CardData.EFFECT_PROC_TIME):
+	for effect in CardDataRef.GetEffectsOfType(effectType):
+		await effect.DoEffect(self)
+	
+func DoDanceEffect():
+	var tween = get_tree().create_tween()
+	tween.tween_property($CardFront, "rotation_degrees", 15, .1)
+	await tween.finished
+	tween = get_tree().create_tween()
+	tween.tween_property($CardFront, "rotation_degrees", 0, .1)
+	await tween.finished
+	
 func _ready() -> void:
 	ControlType = CONTROL.CANNOT_MOVE
 	SetNewState(CardState)
@@ -83,7 +99,10 @@ func _process(delta: float) -> void:
 				HideCardInfo()
 				Finder.GetPlayer().HoldCard(self)
 				LastPosition = global_position		
-		
+	
+func GetEffectSpawnPosition():
+	return $CardFront/EffectSpawnPosition.global_position
+	
 func CanUse():
 	return ControlType == CONTROL.CAN_MOVE
 
@@ -97,15 +116,16 @@ func _on_mouse_entered() -> void:
 
 func ShowCardInfo():
 	var data = {}
-	data["value"] = CardDataRef.GetValue()
+	data["value"] = GetValue()
 	data["title"] = CardDataRef.CardName
+	data["tags"] = CardDataRef.GetTagsString()
 	Finder.GetInfoPanel().ShowInfo(data)
 	
 func HideCardInfo():
 	Finder.GetInfoPanel().Hide()
 
 func GetValue():
-	return CardDataRef.GetValue()
+	return CurrentValue
 	
 func _on_mouse_exited() -> void:
 	if IsHovered():

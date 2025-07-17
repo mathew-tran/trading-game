@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_kow3c")
+Tags = 1
 CardName = "Ruby"
 CardValue = 8
 CardArt = ExtResource("1_ipafm")

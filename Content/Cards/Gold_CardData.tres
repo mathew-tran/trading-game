@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_kgs5a")
+Tags = 1
 CardName = "Gold"
 CardValue = 10
 CardArt = ExtResource("1_lucsp")

@@ -21,8 +21,16 @@ func AddPoints(amount):
 	CurrentAmount += amount
 	OnGoalUpdated.emit()
 	
+func ApplySellEffects():
+	for slot in $SellArea.GetSlots():
+		if slot.GetCard() != null:
+			await slot.GetCard().ApplyEffects(CardData.EFFECT_PROC_TIME.SELL)
+		
 func FinishTurn():
 	SetState(GAME_STATE.SETTING_UP)
+	
+	await ApplySellEffects()
+	
 	var usedSlot = $SellArea.GetNextUsedSlot()
 	while usedSlot != null:
 		await usedSlot.GetCard().FlipBack()

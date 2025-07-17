@@ -99,3 +99,5 @@ offset_bottom = 534.0
 visible = false
 
 [node name="Effects" type="Node2D" parent="." groups=["Effects"]]
+z_index = 4096
+z_as_relative = false

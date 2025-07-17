@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://cwfkn1gbrxhl8"]
+
+[ext_resource type="Texture2D" uid="uid://2hqfevyf64a3" path="res://Art/Card-Loupe.png" id="1_3ow74"]
+[ext_resource type="Script" uid="uid://toqiwsj7qij2" path="res://Content/CardData.gd" id="2_87cqo"]
+[ext_resource type="Script" uid="uid://ch25mk2hfh8dq" path="res://Content/CardEffects/CardEffectData.gd" id="2_y6gmt"]
+[ext_resource type="Script" uid="uid://cnvie8awbtl7k" path="res://Content/CardEffects/CardEffectIncreaseValueData.gd" id="3_y6gmt"]
+
+[sub_resource type="Resource" id="Resource_pfdon"]
+script = ExtResource("3_y6gmt")
+AmountToIncrease = 2
+TagToApply = 0
+ProcEffectPhase = 0
+metadata/_custom_type_script = "uid://cnvie8awbtl7k"
+
+[resource]
+script = ExtResource("2_87cqo")
+Tags = 2
+CardName = "Loupe"
+CardValue = 8
+CardArt = ExtResource("1_3ow74")
+Effects = Array[ExtResource("2_y6gmt")]([SubResource("Resource_pfdon")])
+metadata/_custom_type_script = "uid://toqiwsj7qij2"

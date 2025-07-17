@@ -5,7 +5,7 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foipe"]
 
-[node name="SellSlot" type="Panel"]
+[node name="SellSlot" type="Panel" groups=["Sell"]]
 custom_minimum_size = Vector2(552, 444)
 offset_right = 168.0
 offset_bottom = 208.0

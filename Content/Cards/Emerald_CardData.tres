@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_sy0wu")
+Tags = 1
 CardName = "Emerald"
 CardValue = 5
 CardArt = ExtResource("1_n3qvl")

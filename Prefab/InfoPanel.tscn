@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp152bf02goyn"]
+[gd_scene load_steps=3 format=3 uid="uid://dp152bf02goyn"]
 
 [ext_resource type="Script" uid="uid://b3gwypw3sbcan" path="res://Scripts/InfoPanel.gd" id="1_srmvp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srmvp"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="InfoPanel" type="Panel" groups=["InfoPanel"]]
 offset_right = 241.0
@@ -36,3 +39,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 visible_characters_behavior = 1
+
+[node name="Tags" type="Label" parent="."]
+layout_mode = 2
+offset_top = -49.0
+offset_right = 241.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_srmvp")
+text = "[GEM][TOOL][VEGETABLE][BLAH]"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
